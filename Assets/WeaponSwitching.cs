@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponSwitching : MonoBehaviour {
 
     public int selectedWeapon = 0;
+    public GameObject bulletsTextM4A1;
+    public GameObject bulletsTextUMP45;
+    public GameObject bulletsTextGlock18;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         SelectWeapon();
 	}
 	
@@ -56,7 +60,28 @@ public class WeaponSwitching : MonoBehaviour {
         foreach(Transform weapon in transform)
         {
             if (i == selectedWeapon)
+            {
                 weapon.gameObject.SetActive(true);
+                if (selectedWeapon == 0)
+                {
+                    bulletsTextM4A1.SetActive(true);
+                    bulletsTextUMP45.SetActive(false);
+                    bulletsTextGlock18.SetActive(false);
+                }
+                else if (selectedWeapon == 1)
+                {
+                    bulletsTextM4A1.SetActive(false);
+                    bulletsTextUMP45.SetActive(true);
+                    bulletsTextGlock18.SetActive(false);
+                }
+                else if(selectedWeapon == 2)
+                {
+                    bulletsTextM4A1.SetActive(false);
+                    bulletsTextUMP45.SetActive(false);
+                    bulletsTextGlock18.SetActive(true);
+                }
+            }
+
             else
                 weapon.gameObject.SetActive(false);
             i++;
